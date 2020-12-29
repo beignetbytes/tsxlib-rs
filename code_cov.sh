@@ -36,11 +36,6 @@ echo -e "${GREEN}*** Rebuilding tests ***${NC}"
 cargo clean
 cargo test --no-run
 
-echo `ls`
-cd target
-echo `ls`
-cd debug
-echo `ls`
 
 echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
 for test_file in `ls "$TSXLIB_UNIT_TESTS"*`
