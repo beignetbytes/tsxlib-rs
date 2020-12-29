@@ -34,12 +34,13 @@ rm -f "$TSXLIB_UNIT_TESTS"*
 
 echo -e "${GREEN}*** Rebuilding tests ***${NC}"
 cargo clean
-cargo test
+cargo test --no-run
 
 echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
 for test_file in `ls "$TSXLIB_UNIT_TESTS"*`
 do
     if [[ ! -x "$test_file" ]]; then
+        bash <(curl -s https://codecov.io/bash)
         continue
     fi
     kcov $KCOV_ARGS "$test_file"
@@ -49,4 +50,4 @@ do
     fi
 done
 
-echo -e "${GREEN}*** Coverage completed successfully ***${NC}"
+echo -e "${GREEN}*** Coverage completed and uploaded successfully ***${NC}"
