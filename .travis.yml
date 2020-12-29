@@ -35,7 +35,7 @@ addons:
       - libiberty-dev
       
 before_install:
-  - chmod +x build.sh
+  - chmod +x code_cov.sh
   
 after_success: 
   - ./code_cov.sh
