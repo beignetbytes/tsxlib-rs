@@ -95,41 +95,6 @@ fn runnable_with_parq_enabled(){
     gen_timings!("Map struct via iterator", Box::new(|| {newbase.iter().map(|x| TimeSeriesDataPoint::new(x.timestamp,complicated(&x.value))).collect_from_unchecked_iter();}),100);
     gen_timings!("Map struct via native method", Box::new(|| {newbase.map(complicated);}),100);
 
-
-    //SCRAP AREA
-    use polars::prelude::*;
-    use rand::Rng;
-    let mut rng =  rand::thread_rng();
-    let idx = (0u32..999997).collect::<Vec<u32>>();
-    let vs = idx.iter().map(|_x| rng.gen::<f64>()).collect::<Vec<f64>>();
-    let s1: Series = Series::new("id", idx);
-    let sf2: Series = Series::new("vals", vs.clone());
-    let df1 = DataFrame::new(vec![s1.clone(),sf2.clone()]).unwrap();
-    let df2 = DataFrame::new(vec![s1.clone(),sf2.clone()]).unwrap();
-    let s2: Series = Series::new("vals", vs.clone());
-    
-    
-
-    gen_timings!("polars inner join", Box::new(|| {    
-        let df3 = df1.inner_join(&df2, "id", "id").unwrap();
-    }),100);
-
-    gen_timings!("polars left join", Box::new(|| {    
-        let df3 = df1.left_join(&df2, "id", "id").unwrap();
-    }),100);
-    
-    gen_timings!("polars apply", Box::new(|| {    
-        s2.f64()
-        .unwrap()
-        .apply(|value| value * 2.0)
-        .into_series();
-    }),100);
-    let rs2: Series = Series::new("vals", vs.clone());
-    gen_timings!("polars arty", Box::new(|| {    
-        &rs2 * 2.0;
-    }),100);
-
-
 }
 
 #[cfg(not(feature = "parq"))]
