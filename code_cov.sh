@@ -41,14 +41,16 @@ echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
 for test_file in `ls "$TSXLIB_UNIT_TESTS"*`
 do
     if [[ ! -x "$test_file" ]]; then
-        bash <(curl -s https://codecov.io/bash)
+        echo -e "${GREEN}*** skipping $test_file ***${NC}"
         continue
     fi
-    kcov $KCOV_ARGS "$test_file"
+    kcov $KCOV_ARGS "$test_file"    
     if [ "$?" != "0" ]; then
         echo -e "${RED}*** Failure during unit test converage ***${NC}"
         exit 1
     fi
+    bash <(curl -s https://codecov.io/bash)
+    
 done
 
 echo -e "${GREEN}*** Coverage completed and uploaded successfully ***${NC}"
