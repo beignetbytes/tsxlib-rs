@@ -8,6 +8,19 @@ INCLUDE="/src"
 EXCLUDE="/.cargo,/examples"
 TARGET="target/cov"
 
+echo -e "${GREEN}*** Set up kcov ***${NC}"
+wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz &&
+tar xzf master.tar.gz &&
+cd kcov-master &&
+mkdir build &&
+cd build &&
+cmake .. &&
+make &&
+make install DESTDIR=../../kcov-build &&
+cd ../.. &&
+rm -rf kcov-master &&
+
+
 KCOV_ARGS="--include-pattern=$INCLUDE --exclude-pattern=$EXCLUDE --verify $TARGET"
 
 TSXLIB_UNIT_TESTS="target/debug/tsxlib-"
