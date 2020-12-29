@@ -1,0 +1,3502 @@
+[
+  {
+    "timestamp": "2015-01-01T00:00:29.551",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.13717958476064784
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:02:01.669",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.1103354101195595
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:05:28.618",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5757601921446152
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:05:46.194",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.036663777164328115
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:06:29.487",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2114872626243292
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:06:46.205",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1738538448491336
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:07:54.813",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7620745591001374
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:07:58.746",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.34638213303295284
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:11:09.791",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2538837110668304
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:13:48.900",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8056773157748272
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:14:46.641",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8814916039510456
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:15:49.303",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6810346052606246
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:16:21.135",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.1393563136675311
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:17:18.786",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9222566313302634
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:17:59",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.344581177122638
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:20:00.774",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5174743936012638
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:20:05.904",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.343573933587467
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:22:28.264",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6733652090978048
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:26:46.198",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.09482152636703822
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:29:01.283",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.1323671018135819
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:29:13.119",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7750557623886469
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:32:44.057",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.820285748193465
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:32:53.459",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4511428015279906
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:33:03.424",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.992378569607676
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:35:10.132",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.46817120091658393
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:36:16.480",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7813236294622687
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:38:46.776",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0826616005856973
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:39:23.480",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.446483572396041
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:40:07.850",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3544010627837622
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:41:36.153",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7029682620954838
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:46:32.299",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6159852939650956
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:52:23.377",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.16998910017977795
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:56:45.370",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3531278441101482
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:57:25.916",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.08366370172240689
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:59:29.933",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.04841266949505574
+    }
+  },
+  {
+    "timestamp": "2015-01-01T00:59:51.366",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.860748800384612
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:00:10.671",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.768742170036059
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:02:38.570",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5500978705130297
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:02:50.916",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3018928614733485
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:04:05.375",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.417231654983592
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:04:30.716",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4156119486024646
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:05:03.879",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3029846302952961
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:05:08.623",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.951523441162663
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:07:19.396",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5047027173055092
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:07:44.412",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.026282486420881712
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:11:38.884",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6230851279210965
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:23:40.985",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6534197386626075
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:24:34.849",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7663068004697653
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:26:05.799",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5459523460969342
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:26:41.415",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5573784276316691
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:26:51.437",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9806402030232412
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:27:51.480",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.22920696496089055
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:30:00.854",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.31136567543928884
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:30:05.564",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9370034042636476
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:31:03.833",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5908206793007289
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:33:44.956",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7638460310747717
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:36:54.272",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5736039151790724
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:37:45.247",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2738792341615093
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:38:00.863",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5068855528168845
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:38:39.058",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7636628379982415
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:39:27.240",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0001132279440468
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:42:26.796",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4434530257543486
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:43:24.681",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9984518065136228
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:44:43.461",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9765177035609247
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:44:53.354",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6101589394118108
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:45:34.374",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.391396799800569
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:45:57.791",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9198759591439294
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:46:56.076",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.22013409754877664
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:47:28.876",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.0644416944156192
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:49:20.624",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3476404257380743
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:49:53.241",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.907754319231131
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:50:30.212",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4852442038061682
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:50:31.288",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.11863910457321958
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:51:15.178",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6703429243429115
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:51:17.120",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6531350056369238
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:55:58.481",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3635197322455694
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:57:56.865",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.20361353878233343
+    }
+  },
+  {
+    "timestamp": "2015-01-01T01:58:53.508",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0184295964604155
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:00:07.183",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7269022182341878
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:03:17.282",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9517124824238836
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:03:37.182",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4229084671012353
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:04:12.530",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3155854500353183
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:04:18.506",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8642082114760621
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:04:27.084",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6682802716625384
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:07:28.285",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7014327462098209
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:07:43.924",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.04327083914885632
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:07:45.481",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.404169427480094
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:09:11.822",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.853376492136009
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:10:06.639",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9508943271563776
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:10:21.791",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.509406271995842
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:10:28.988",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1907865200774592
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:12:58.770",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6937496117281319
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:13:07.610",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4074687283759493
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:16:22.497",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.209984989555432
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:19:38.280",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7761148180787856
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:21:59.319",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7104695171773003
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:22:26.962",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2706889519505076
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:24:23.279",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8629449086067944
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:24:30.925",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9243009602658332
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:25:04.603",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3884907945404883
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:25:18.819",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0468309340896724
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:26:00.747",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.85757988936128
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:26:29.008",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2298993771027482
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:31:28.945",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8431050444732757
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:31:59.136",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8534574906258121
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:32:01.811",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3549094864740765
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:35:49.970",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1822778900377773
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:37:08.789",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0156040872828025
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:37:12.118",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5387661834047386
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:38:37.713",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.34650884907149226
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:40:23.659",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7132815325560526
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:41:26.557",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4699439682745956
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:42:12.190",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5914736896977015
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:42:52.488",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.685822194530435
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:42:52.511",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.70623868055983
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:43:08.349",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0316312878814693
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:44:37.870",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9948524402122427
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:46:35.712",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.12517615319140907
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:47:43.445",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.621215889292846
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:48:13.667",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8580274702111357
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:50:51.063",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.956242536271478
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:53:33.891",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4298304251285934
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:54:04.570",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1186147612702184
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:54:11.150",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.07799110418840005
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:55:16.405",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.11967005783477912
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:55:43.322",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9878853337687464
+    }
+  },
+  {
+    "timestamp": "2015-01-01T02:58:37.043",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4387622461252374
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:01:00.246",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2462961491199993
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:01:07.396",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4211516895516516
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:01:08.439",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6087593191966172
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:01:15.504",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2708450540147622
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:02:26.055",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9127846990214944
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:03:38.275",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.22567647861710172
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:03:41.616",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.013197511535338
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:03:54.358",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2172166655133534
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:06:27.806",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6603214269618944
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:10:20.251",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0601590171091004
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:11:27.611",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7806322558110674
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:13:31.090",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.24647910531455608
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:13:36.623",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.100259294545583
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:15:52.245",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9552807347839134
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:16:41.768",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8791111563207317
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:17:57.068",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.923961255162221
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:22:04.405",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3518839929000523
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:23:07.581",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.961810547940011
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:24:48.601",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1577947803548865
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:25:15.355",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0002728104558467
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:25:49.255",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.693073015350162
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:26:22.715",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5347940384853482
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:30:12.357",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5448396220408205
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:30:29.016",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4074854361895048
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:35:15.719",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.37067129996938575
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:35:58.763",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1704346408328823
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:37:26.643",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3545974298688235
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:38:45.094",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7853278747337784
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:40:09.692",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4708139253277288
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:40:32.830",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6799642225701794
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:43:11.785",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7200281748499646
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:46:12.217",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6598849042713382
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:46:38.197",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2293792654588562
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:46:41.769",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9930607055518383
+    }
+  },
+  {
+    "timestamp": "2015-01-01T03:56:44.837",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1064149188181494
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:00:49.826",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.789746698831839
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:01:47.520",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5766263550891773
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:04:34.934",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5711913565740221
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:04:45.670",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6104674617823362
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:06:56.870",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0893839242380028
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:08:30.182",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.881603453449289
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:08:51.161",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2181280175596023
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:10:12.618",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.047223703246598
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:11:06.960",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0553997199199354
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:12:54.514",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3123236512935337
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:15:48.882",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.004258023299938518
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:17:41.061",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2146899613592714
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:21:06.378",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4720924350926237
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:23:05.600",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.029031053132059004
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:27:04.050",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5678663052390798
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:29:02.123",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6518737596063613
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:30:39.535",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4702725689200613
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:31:06.019",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6027642588114326
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:33:17.053",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.13094948029537146
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:35:32.923",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.38901227864794663
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:39:03.054",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4468471401638854
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:40:26.879",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8429373509401157
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:42:02.132",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.31642203565563487
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:42:02.452",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5096368596583158
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:44:47.063",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7617820922317573
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:45:01.706",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7664035498208
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:46:50.531",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.784907076090857
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:46:58.053",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7109783868720267
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:47:00.827",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8754792311376054
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:49:43.146",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1056977440152638
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:50:38.076",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3908449031145669
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:54:07.487",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7388719853599446
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:56:10.577",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9703126553359755
+    }
+  },
+  {
+    "timestamp": "2015-01-01T04:59:52.808",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3816490084377124
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:01:59.326",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.21127091825497812
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:03:48.405",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.19175866154550247
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:04:47.483",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6578052741886198
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:05:15.043",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1400748249535595
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:05:17.016",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2904884925001556
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:06:29.981",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4208507905507124
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:10:29.759",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8440283636723269
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:11:08.994",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7123764452368893
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:13:40.493",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.828210147949627
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:13:50.118",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.95573409869439
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:16:15.218",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5798020501651364
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:16:36.066",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4130030672979179
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:20:46.410",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.276694372605923
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:23:27.522",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2717497394334605
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:24:03.823",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.639333578217091
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:27:26.561",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.886966235445084
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:28:45.851",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2903149263771052
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:29:01.123",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9934400726207376
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:30:05.962",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5357755022550812
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:31:37.949",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.09383749518657147
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:32:30.848",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7675149247593689
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:33:36.471",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5554489377848904
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:36:22.230",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5120308593072775
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:37:00.090",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9878367538028276
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:39:51.991",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.574612058632796
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:40:14.516",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.151575982026578
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:40:37.953",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2276790499527828
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:46:16.948",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3774418223661904
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:49:22.434",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8110640631864281
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:53:05.586",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.48103014073211
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:53:41.259",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1738153325576357
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:54:37.546",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5598411312449143
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:54:39.592",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6154268309469917
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:55:01.378",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5383463571063407
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:56:38.804",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3240538222653482
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:58:14.508",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4626127050153963
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:58:42.033",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8404255314069691
+    }
+  },
+  {
+    "timestamp": "2015-01-01T05:59:44.828",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9167573648003553
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:03:17.598",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3374891348208529
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:04:41.836",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.37671614769348
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:05:22.151",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6061528794738129
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:06:55.075",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9924346800757788
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:09:19.061",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9047646681192
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:11:49.988",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.10434878838374462
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:18:57.887",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5826733556649102
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:23:59.613",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4234738845890142
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:29:53.060",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7081415089968248
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:31:42.054",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.05950130633988615
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:31:45.175",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0351444982945175
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:31:45.797",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4333008167480523
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:33:29.661",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.501473828663427
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:33:32.077",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5924767140640743
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:34:44.470",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.18156455479317
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:36:28.124",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9745761407292616
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:42:00.558",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4696826686534197
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:43:26.956",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9322317715808192
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:49:18.788",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.914764163681436
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:49:22.524",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5892360253119158
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:51:22.443",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8400955191531991
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:53:16.694",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.088368895872484
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:55:00.522",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3509096809546448
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:58:11.618",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.40450444704492927
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:58:24.876",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6333523250623889
+    }
+  },
+  {
+    "timestamp": "2015-01-01T06:58:26.028",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9154236703441004
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:01:45.979",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8772498713479866
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:04:38.076",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.16738867180427763
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:07:08.572",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8133740330487735
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:07:49.522",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.624191532109388
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:10:57.041",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9433191124143556
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:11:55.220",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.18391152494461327
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:12:26.620",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.212939072359951
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:14:53.596",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.36914369613269127
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:15:29.617",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4782004152672179
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:15:57.678",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.295853323440065
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:17:27.528",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1143549250538267
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:17:34.386",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.575097998773607
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:21:21.315",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.915605585242927
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:22:43.035",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1120502203548202
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:24:47.751",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.674990229890049
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:25:01.122",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.278324760029909
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:25:22.053",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.440805457899193
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:27:11.779",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7960958791713466
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:27:13.698",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.26385926529277226
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:28:15.747",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.021654859204842447
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:29:30.587",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.25069547543741444
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:30:14.675",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1174409454330736
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:35:20.610",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.583981071693908
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:36:09.731",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9829637513343848
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:37:06.585",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5083155199647518
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:37:26.548",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.140559596286573
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:40:37.881",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3837495722943818
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:41:29.418",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6206667173061402
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:43:32.714",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8841259122774747
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:44:56.577",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3110659325959906
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:45:20.524",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9813079978784812
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:50:44.145",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.483774047412543
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:51:47.324",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.678264796944931
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:51:55.981",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3626434112771437
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:53:33.772",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8116709846086252
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:54:43.694",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.737731893557501
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:56:30.332",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7951217146487684
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:57:31.873",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1992008609649725
+    }
+  },
+  {
+    "timestamp": "2015-01-01T07:58:43.184",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9736281501368949
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:00:08.616",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7427893210941356
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:04:09.606",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.537123773133267
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:09:42.362",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.972759106522166
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:10:08.511",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.02919739757426898
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:12:58.507",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9112493094319452
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:13:48.231",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4532269097621095
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:14:17.442",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8900347792646
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:14:51.422",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.29221895217230043
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:15:22.657",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.523897318153122
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:16:15.262",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4865166208188898
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:16:26.496",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.10862003728313052
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:16:31.670",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2093369088443422
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:20:45.758",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7078956857314136
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:21:17.134",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7405225142022809
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:21:19.020",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3362216424209123
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:22:30.735",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1174424631387554
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:25:25.155",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.945446157716605
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:25:26.512",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0176422210006988
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:27:29.349",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5526025900855207
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:27:33.360",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7006545472711725
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:27:37.229",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.143673626296669
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:30:42.937",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9720577286483516
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:32:09.044",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.36231168691159055
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:33:56.810",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5166063862413
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:36:58.771",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9614378009039252
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:37:39.242",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.921580234261157
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:43:14.179",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4262454946297405
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:47:43.586",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.0392368829317189
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:48:22.862",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0437059224461769
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:49:55.435",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.17860798600479622
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:50:14.999",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5720410828479376
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:54:26.363",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4830846592387814
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:55:18.856",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2423260276595829
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:56:34.357",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.747457451829348
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:56:49.957",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9636783679022384
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:58:28.691",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8649661952006251
+    }
+  },
+  {
+    "timestamp": "2015-01-01T08:58:45.849",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8887311945432423
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:01:23.932",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2162231016695393
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:02:06.094",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1626320011027678
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:05:35.242",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8509946450033516
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:05:35.342",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.05375846761684944
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:06:02.528",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4318218142578163
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:07:13.047",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.828006667955933
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:11:51.514",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6514707306205296
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:11:57.627",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8657291518945833
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:12:09.367",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5760523691747328
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:13:10.204",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0991700073831794
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:13:25.309",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1032929548626866
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:14:10.620",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.1020760203504123
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:15:10.668",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3242997271201482
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:15:54.858",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.633726178094311
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:17:00.314",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8849331792006923
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:17:41.704",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.19305846257235837
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:23:36.683",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7735240645028394
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:23:56.504",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.37261964298763584
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:25:15.706",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9510920124103903
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:26:41.830",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.818100555366236
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:27:18.119",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.444981690751145
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:28:09.472",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8692086947257345
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:28:28.927",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5782067097741936
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:30:41.025",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3916558815820896
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:31:27.941",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9787472684433396
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:32:35.237",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.539961428543076
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:32:57.014",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.294640513089072
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:33:14.465",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.42512064286327145
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:33:36.971",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6852952435761777
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:36:50.437",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.14304443343479534
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:38:16.689",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7134633701875948
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:41:08.589",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3308974589672049
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:43:45.302",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9862895260365458
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:45:35.183",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9488166209148976
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:45:41.404",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9891601876248424
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:46:42.785",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8800675469232748
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:50:11.503",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5589515270780354
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:50:49.450",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.20797501710363095
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:55:58.486",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9892563543886794
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:57:40.908",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6631956509940078
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:58:49.171",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5650924540875506
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:59:02.306",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8899506141946742
+    }
+  },
+  {
+    "timestamp": "2015-01-01T09:59:46.700",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0230964825587556
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:04:51.190",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1824401915265523
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:05:09.115",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.03334070420493873
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:12:13.647",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.22591833068186615
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:13:18.632",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8369525553716375
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:13:22.381",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.650811089328148
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:13:38.730",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9860675799222756
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:14:17.854",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3528655372906926
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:14:30.692",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.23415413118153117
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:14:32.766",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.18486931058128797
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:17:08.865",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9937233970895988
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:17:57.248",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7328601796578602
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:18:22.551",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9065390107198632
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:18:25.765",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5340547586958588
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:18:33.629",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.16034796923781
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:18:38.439",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6162765446206706
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:20:19.987",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4680164606667605
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:21:00.695",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.47442839505594225
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:21:14.104",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8855423820601389
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:22:03.555",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8642267340267773
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:24:11.440",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2105869784533156
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:25:52.862",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.6871626861760698
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:26:04.404",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8318371212096847
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:29:03.132",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.704201004976427
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:29:20.661",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4609097644699025
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:29:28.511",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5754610800707791
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:31:26.573",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0541728963506436
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:37:31.217",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.725175632604551
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:40:46.675",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6053309173628072
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:42:32.523",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.967216035629804
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:43:31.238",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.03414536185458217
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:43:48.477",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8170327667947523
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:44:43.039",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5163109860677615
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:46:18.364",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.37865516872973326
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:46:41.790",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0158609621810335
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:48:53.215",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.348690822969547
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:48:55.496",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5690084695376612
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:51:34.362",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.10199514644131802
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:51:51.796",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.14427473259564
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:53:07.421",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0805791159029756
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:54:15.580",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.958716770497534
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:54:46.198",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1969332656371672
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:55:53.453",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3269307370783403
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:56:01.394",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.852624168706676
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:56:07.095",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9644153215464496
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:56:07.759",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5853402229908942
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:56:47.096",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3538971568163083
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:57:03.797",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.0651677931143553
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:58:47.833",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.4845927755940287
+    }
+  },
+  {
+    "timestamp": "2015-01-01T10:59:00",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.132664666161484
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:00:37.943",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8772079714447953
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:00:39.928",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.123803060254421
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:00:41.220",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7406394666443707
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:01:35.158",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.922835100827798
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:02:48.964",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3333441804861268
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:04:15.240",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.1473401860997101
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:05:25.079",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5397365784386126
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:06:30.357",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.556761372457789
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:07:43.448",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9797220572131908
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:09:54.412",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6407763738508276
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:10:53.020",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8732327649096117
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:11:12.374",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.39925423847192776
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:11:45.301",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.44164639095107927
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:12:55.076",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1020487483543708
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:14:25.624",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7813880893740968
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:15:52.422",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9028315509350753
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:16:50.865",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.296422434692721
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:17:20.755",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8928908189883833
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:24:16.985",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7177103137188348
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:25:45.278",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5590755507118086
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:27:18.848",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3089306302332806
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:28:03.217",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3483697350660335
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:28:15.947",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5291648059371963
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:29:28.216",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.819458847265091
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:31:39.258",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1465639852352236
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:31:58.711",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3942134295429245
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:32:11.610",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.21877129460284128
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:34:37.105",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6462765313033072
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:39:51.448",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.2215703438433343
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:40:10.675",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.092762338524393
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:41:52.804",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.48697930684408575
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:44:11.422",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.9109866052470736
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:44:12.484",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7802942870804854
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:45:25.465",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.37313530567958786
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:46:39.052",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5142705031145904
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:47:03.951",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.40110373893195783
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:48:13.592",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2745321392031723
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:50:35.562",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.7264155608956493
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:53:50.484",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9285292029001129
+    }
+  },
+  {
+    "timestamp": "2015-01-01T11:58:53.705",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.3091823745798443
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:00:00.790",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4506065657607572
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:00:33.705",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3212961940430581
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:01:53.558",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.38527075934445687
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:02:00.232",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.17172510879587666
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:04:32.835",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3034002079132898
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:05:04.735",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.7448238175198951
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:05:20.079",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.645577195856066
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:07:32.001",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5680034204283262
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:07:46.138",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.8160666999629496
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:08:29.955",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.3234071253314035
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:10:04.390",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.4231187045443514
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:12:13.073",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.13710465003723082
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:15:10.445",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1677702774881824
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:17:22.660",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1643584515365828
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:17:39.687",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9157222622730312
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:19:33.571",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5871327508854751
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:21:25.115",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.5007796063360468
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:21:43.701",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8248176722232283
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:22:09.652",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6172382486936765
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:22:55.599",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.039988425123762106
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:24:54.002",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.421040134299729
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:25:58.075",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.0529360593924213
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:26:55.125",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.6462931901009783
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:29:56.096",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9366432027673235
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:31:52.634",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5481920247404697
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:36:13.058",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.5307145545172147
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:38:05.693",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.2964747426334329
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:43:36.707",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.8212434208067816
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:44:34.179",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.1139183750109047
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:44:47.920",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 1.9183574673185455
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:46:37.900",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.27218452590926345
+    }
+  },
+  {
+    "timestamp": "2015-01-01T12:46:58.468",
+    "value": {
+      "intthing": 100,
+      "floatvalue": 0.47659543969293305
+    }
+  }
+]
