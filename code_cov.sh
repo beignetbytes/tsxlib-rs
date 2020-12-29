@@ -23,7 +23,7 @@ rm -rf kcov-master &&
 
 KCOV_ARGS="--include-pattern=$INCLUDE --exclude-pattern=$EXCLUDE --verify $TARGET"
 
-TSXLIB_UNIT_TESTS="target/debug/tsxlib-"
+TSXLIB_UNIT_TESTS="target/debug/deps/tsxlib-"
 
 export RUSTFLAGS="-C link-dead-code"
 
