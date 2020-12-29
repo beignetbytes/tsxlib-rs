@@ -34,14 +34,14 @@ addons:
 after_success: |
   wget https://github.com/binarybytes11/tsxlib-rs/archive/main.tar.gz &&
   tar xzf main.tar.gz &&
-  cd kcov-main &&
+  cd tsxlib-rs-main &&
   mkdir build &&
   cd build &&
   cmake .. &&
   make &&
-  make install DESTDIR=../../kcov-build &&
+  make install DESTDIR=../../tsxlib-rs-build &&
   cd ../.. &&
-  rm -rf kcov-main &&
+  rm -rf tsxlib-rs-main &&
   for file in target/debug/tsxlib-rs-*; do [ -x "${file}" ] || continue; mkdir -p "target/cov/$(basename $file)"; ./kcov-build/usr/local/bin/kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
   bash <(curl -s https://codecov.io/bash) &&
   echo "Uploaded code coverage"
