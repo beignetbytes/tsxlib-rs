@@ -5,8 +5,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-INCLUDE="/src"
-EXCLUDE="/.cargo,/examples"
+EXCLUDE="/.cargo,/examples,/usr/lib"
 TARGET="target/cov"
 
 echo -e "${GREEN}*** Set up kcov ***${NC}"
@@ -20,9 +19,6 @@ make &&
 make install DESTDIR=../../kcov-build &&
 cd ../.. &&
 rm -rf kcov-master &&
-
-
-KCOV_ARGS="--include-pattern=$INCLUDE --exclude-pattern=$EXCLUDE --verify $TARGET"
 
 TSXLIB_UNIT_TESTS="target/debug/deps/tsxlib-"
 
@@ -42,11 +38,13 @@ echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
 for test_file in `ls "$TSXLIB_UNIT_TESTS"*`
 do
     if [[ ! -x "$test_file" ]]; then
-        echo -e "${YELLOW}*** skipping $test_file ***${NC}"
+        echo -e "${YELLOW}*** skipping non executable $test_file ***${NC}"
         continue
     fi
     echo -e "${GREEN}*** Running $test_file ***${NC}"
-    kcov $KCOV_ARGS "$test_file"    
+    
+    mkdir -p "target/cov/$(basename $test_file)" 
+    ./kcov-build/usr/local/bin/kcov --exclude-pattern=$EXCLUDE --verify "target/cov/$(basename $test_file)" "$test_file";   
     if [ "$?" != "0" ]; then
         echo -e "${RED}*** Failure during unit test converage ***${NC}"
         exit 1
