@@ -11,10 +11,12 @@ script:
   - rustup component add clippy
   - if [ "$TRAVIS_RUST_VERSION" == "nightly" ]; then
         cargo build --release --features --features "parq" ;
+        cargo test --features "parq" ;
         cargo clippy -p tsxlib --features "parq" ;
     fi
   - cargo build --release
   - cargo build --release --features "json"
+  - cargo test --features "json"
   - cargo clippy -p tsxlib --features "json"
 
 env:
