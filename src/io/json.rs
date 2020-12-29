@@ -17,7 +17,7 @@ where
     let file = std::fs::File::open(&path).unwrap();
     let rdr = std::io::BufReader::new(file);
     let data: Vec<TimeSeriesDataPoint<TDate,T>> = serde_json::from_reader(rdr)?;
-    Ok(TimeSeries::from_tsdatapoints_unchecked(data).unwrap())
+    Ok(TimeSeries::from_tsdatapoints_unchecked(data))
 }
 
 pub enum JSONStyle{ Default, Pretty}
@@ -27,7 +27,7 @@ where
     TDate: Serialize + Hash + Copy + cmp::Eq + cmp::Ord, 
     T: Serialize + Copy,
 {
-    let vec: Vec<TimeSeriesDataPoint<TDate,T>> = ts.ordered_iter().collect();
+    let vec: Vec<TimeSeriesDataPoint<TDate,T>> = ts.into_ordered_iter().collect();
     let path = std::path::Path::new(file_path);
     let wtr = &std::fs::File::create(&path)?;
     let res = match jsonstyle {
