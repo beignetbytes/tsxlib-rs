@@ -208,7 +208,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
     }
 
 
-    pub fn into_ordered_iter(&self) -> OrderedTimeSeriesIter<TDate,T> {
+    pub fn into_ordered_iter(&self) -> OrderedTimeSeriesIter<TDate,T> {   #![allow(clippy::wrong_self_convention)]
         OrderedTimeSeriesIter::new(&self, 0)
     }
 
@@ -227,7 +227,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
     /// let ts = TimeSeries::from_vecs(index, values).unwrap();
     /// assert_eq!(ts.into_iter().count(), 2);
     /// ```
-    pub fn into_iter(&self) -> TimeSeriesIter<TDate,T> {
+    pub fn into_iter(&self) -> TimeSeriesIter<TDate,T> {   #![allow(clippy::wrong_self_convention)]
         TimeSeriesIter::new(&self, 0)
     }
 
@@ -505,6 +505,7 @@ mod tests {
     use chrono::{NaiveDateTime};
     use crate::timeutils;
     use crate::algo::int_utils;
+    use crate::algo::chrono_utils;
     
     #[test]
     fn test_construction() {
@@ -815,5 +816,171 @@ mod tests {
         // joinedasof_custom2.iter().for_each(|x|println!("{:.2?}",x));
 
     }
+
+    #[test]
+    fn test_naivedatetime_merge_asof_lookingback(){
+
+        let values = vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+        let index = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];    
+        let ts = TimeSeries::from_vecs(index.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values).unwrap();
+        let values2 = vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
+        let index2 = vec![2, 4, 5, 7, 8, 10];    
+        let ts_join = TimeSeries::from_vecs(index2.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values2).unwrap();
+        let joinedasof = ts.merge_apply_asof(&ts_join,None,|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::NoRoll);
+
+
+        let joinedasof_custom = ts.merge_apply_asof(&ts_join,Some(chrono_utils::merge_asof_prior(Duration::seconds(1))),|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::RollPrior);
+
+        let joinedasof_custom2 = ts.merge_apply_asof(&ts_join,Some(chrono_utils::merge_asof_prior(Duration::seconds(2))),|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::RollPrior);
+
+
+
+        let expected1 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(6.00)) },
+        ];
+
+        let expected2 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(6.00)) },
+        ];
+
+        let expected3 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(6.00)) },
+        ];
+
+        let ts_expected1 = TimeSeries::from_tsdatapoints(expected1).unwrap();
+        let ts_expected2 = TimeSeries::from_tsdatapoints(expected2).unwrap();
+        let ts_expected3 = TimeSeries::from_tsdatapoints(expected3).unwrap();
+
+        assert_eq!(joinedasof, ts_expected1);
+        assert_eq!(joinedasof_custom, ts_expected2);
+        assert_eq!(joinedasof_custom2, ts_expected3);
+
+        // joinedasof.iter().for_each(|x|println!("{:.2?}",x));
+        // println!("other");
+        // joinedasof_custom.iter().for_each(|x|println!("{:.2?}",x));
+        // println!("other2");
+        // joinedasof_custom2.iter().for_each(|x|println!("{:.2?}",x));
+
+    }
+
+    #[test]
+    fn test_naivedatetime_merge_asof_lookingforward(){
+
+        let values = vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+        let index = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];    
+        let ts = TimeSeries::from_vecs(index.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values).unwrap();
+        let values2 = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+        let index2 = vec![2, 5, 6, 8, 10];    
+        let ts_join = TimeSeries::from_vecs(index2.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values2).unwrap();
+        let joinedasof = ts.merge_apply_asof(&ts_join,None,|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::NoRoll);
+
+
+        let joinedasof_custom = ts.merge_apply_asof(&ts_join,Some(chrono_utils::merge_asof_fwd(Duration::seconds(1))),|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::RollFollowing);
+
+
+        let joinedasof_custom2 = ts.merge_apply_asof(&ts_join,Some(chrono_utils::merge_asof_fwd(Duration::seconds(2))),|a,b| (*a, match b {
+            Some(x) => Some(*x),
+            None => None
+        }), MergeAsofMode::RollFollowing);
+
+
+
+        let expected1 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(5.00)) },
+        ];
+
+        let expected2 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, None) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(5.00)) },
+        ];
+
+        let expected3 = vec![
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(4.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, Some(5.00)) },
+            TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(5.00)) },
+        ];
+
+        let ts_expected1 = TimeSeries::from_tsdatapoints(expected1).unwrap();
+        let ts_expected2 = TimeSeries::from_tsdatapoints(expected2).unwrap();
+        let ts_expected3 = TimeSeries::from_tsdatapoints(expected3).unwrap();
+
+        assert_eq!(joinedasof, ts_expected1);
+        assert_eq!(joinedasof_custom, ts_expected2);
+        assert_eq!(joinedasof_custom2, ts_expected3);
+
+        // joinedasof.iter().for_each(|x|println!("{:.2?}",x));
+        // println!("other");
+        // joinedasof_custom.iter().for_each(|x|println!("{:.2?}",x));
+        // println!("other2");
+        // joinedasof_custom2.iter().for_each(|x|println!("{:.2?}",x));
+
+    }
+
 
 }

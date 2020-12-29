@@ -54,7 +54,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
             false
         }
     }
-    fn index_is_same(&self) -> bool{ #![allow(unused_assignments)] #![allow(unused_mut)]
+    fn index_is_same(&self) -> bool{ #![allow(unused_assignments)] #![allow(unused_mut)] #![allow(clippy::let_and_return)]
         let mut out = false; 
         #[cfg(feature = "hash_precompare")]{
             out = self.hash_precompare();

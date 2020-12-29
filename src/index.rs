@@ -175,6 +175,8 @@ impl <TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> cmp::PartialEq for 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::timeutils;
+    use chrono::{Duration};
 
     #[test]
     fn test_increasing() {
@@ -194,4 +196,20 @@ mod tests {
         let index = HashableIndex::from_int_stamps(vec![1]);
         assert!(index.is_monotonic());
     }
+
+    #[test]
+    fn test_sample_rate_info(){        
+        let index = HashableIndex::new(vec![ timeutils::naive_datetime_from_millis(0), timeutils::naive_datetime_from_millis(5),timeutils::naive_datetime_from_millis(10), timeutils::naive_datetime_from_millis(15), timeutils::naive_datetime_from_millis(20), timeutils::naive_datetime_from_millis(25), timeutils::naive_datetime_from_millis(75)]);
+        let exp =  vec![(5,Duration::milliseconds(5)),(1,Duration::milliseconds(50))];
+        assert_eq!(index.sample_rates(), exp);
+    }
+
+    #[test]
+    fn test_monosampled_test(){
+        let index = HashableIndex::new(vec![ timeutils::naive_datetime_from_millis(0), timeutils::naive_datetime_from_millis(5),timeutils::naive_datetime_from_millis(10), timeutils::naive_datetime_from_millis(15), timeutils::naive_datetime_from_millis(20), timeutils::naive_datetime_from_millis(25), timeutils::naive_datetime_from_millis(75)]);
+        let index_mono = HashableIndex::new(vec![ timeutils::naive_datetime_from_millis(0), timeutils::naive_datetime_from_millis(5),timeutils::naive_datetime_from_millis(10), timeutils::naive_datetime_from_millis(15), timeutils::naive_datetime_from_millis(20), timeutils::naive_datetime_from_millis(25)]);
+        assert_eq!(index.is_mono_intervaled(), false);
+        assert_eq!(index_mono.is_mono_intervaled(), true);
+    }
+
 }
