@@ -33,6 +33,9 @@ addons:
       - gcc
       - binutils-dev
       - libiberty-dev
-
+      
+before_install:
+  - chmod +x build.sh
+  
 after_success: 
   - ./code_cov.sh
