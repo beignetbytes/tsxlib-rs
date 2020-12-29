@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
@@ -41,9 +42,10 @@ echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
 for test_file in `ls "$TSXLIB_UNIT_TESTS"*`
 do
     if [[ ! -x "$test_file" ]]; then
-        echo -e "${GREEN}*** skipping $test_file ***${NC}"
+        echo -e "${YELLOW}*** skipping $test_file ***${NC}"
         continue
     fi
+    echo -e "${GREEN}*** Running $test_file ***${NC}"
     kcov $KCOV_ARGS "$test_file"    
     if [ "$?" != "0" ]; then
         echo -e "${RED}*** Failure during unit test converage ***${NC}"
