@@ -33,6 +33,7 @@ rm -f "$TSXLIB_UNIT_TESTS"*
 
 
 echo -e "${GREEN}*** Rebuilding tests ***${NC}"
+cargo clean
 cargo test
 
 echo -e "${GREEN}*** Run coverage on tsxlib unit tests ***${NC}"
