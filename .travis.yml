@@ -19,3 +19,29 @@ script:
 env:
   global:
     - RUST_BACKTRACE=1
+
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libelf-dev
+      - libdw-dev
+      - cmake
+      - gcc
+      - binutils-dev
+      - libiberty-dev
+
+after_success: |
+  wget https://github.com/binarybytes11/tsxlib-rs/archive/main.tar.gz &&
+  tar xzf main.tar.gz &&
+  cd kcov-main &&
+  mkdir build &&
+  cd build &&
+  cmake .. &&
+  make &&
+  make install DESTDIR=../../kcov-build &&
+  cd ../.. &&
+  rm -rf kcov-main &&
+  for file in target/debug/tsxlib-rs-*; do [ -x "${file}" ] || continue; mkdir -p "target/cov/$(basename $file)"; ./kcov-build/usr/local/bin/kcov --exclude-pattern=/.cargo,/usr/lib --verify "target/cov/$(basename $file)" "$file"; done &&
+  bash <(curl -s https://codecov.io/bash) &&
+  echo "Uploaded code coverage"
