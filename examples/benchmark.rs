@@ -66,8 +66,8 @@ fn runnable_with_parq_enabled(){
         });
     }),100);
 
-    gen_timings!("Bar Data round up", Box::new(|| {ts.resample_and_agg(Duration::minutes(15), |dt,dur| timeutils::round_up_to_nearest_duration(*dt, *dur), |x| *x.last().unwrap().value);}),100);
-    gen_timings!("Bar Data round down", Box::new(|| {ts.resample_and_agg(Duration::minutes(15), |dt,dur| timeutils::round_down_to_nearest_duration(*dt, *dur), |x| *x.last().unwrap().value);}),100);
+    gen_timings!("Bar Data round up", Box::new(|| {ts.resample_and_agg(Duration::minutes(15), |dt,dur| timeutils::round_up_to_nearest_duration(dt, dur), |x| *x.last().unwrap().value);}),100);
+    gen_timings!("Bar Data round down", Box::new(|| {ts.resample_and_agg(Duration::minutes(15), |dt,dur| timeutils::round_down_to_nearest_duration(dt, dur), |x| *x.last().unwrap().value);}),100);
     
     #[derive(Clone,Copy,Serialize,Default)]
     struct SimpleStruct{

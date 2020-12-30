@@ -18,7 +18,7 @@ fn runnable_with_parq_enabled(){
         TimeSeriesDataPoint::new(ts,value)
     };
 
-    let ts = tsxlib::io::parquet::read_from_file::<NaiveDateTime, f64>("C:\\dev\\rust\\tsxlib.rs-master\\testdata\\rand_data.parquet",datapoint_gen_func).unwrap();
+    let ts = tsxlib::io::parquet::read_from_file::<NaiveDateTime, f64>("../../../testdata/rand_data.parquet",datapoint_gen_func).unwrap();
     let (sender, mut receiver): (mpsc::Sender<TimeSeriesDataPoint<NaiveDateTime,f64>>,mpsc::Receiver<TimeSeriesDataPoint<NaiveDateTime,f64>>) = mpsc::channel();
     thread::spawn(move || {
         ts.into_ordered_iter().for_each( |dp| {

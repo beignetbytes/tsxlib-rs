@@ -5,7 +5,6 @@ use std::iter::FromIterator;
 use itertools::Itertools;
 use serde::{Serialize};
 
-use chrono::{Duration};
 
 use crate::timeseries_iterators::{OrderedTimeSeriesIter, ShiftedTimeSeriesIter, RollingTimeSeriesIter,RollingTimeSeriesIterWithUpdate,FromUncheckedIterator,TimeSeriesRefIter,OrderedTimeSeriesRefIter, TimeSeriesIter, SkipApplyTimeSeriesIter};
 use crate::data_elements::TimeSeriesDataPoint;
@@ -14,7 +13,7 @@ use crate::joins::{JoinEngine};
 
 pub enum MergeAsofMode{ RollPrior, RollFollowing, NoRoll}
 
-/// timeseries base struct 
+/// timeseries base struct of an index and a Vec<T> of values
 #[derive(Clone,Debug)]
 pub struct TimeSeries<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     pub timeindicies: HashableIndex<TDate>,
@@ -162,7 +161,23 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
             None
         }
     }
-
+    /// Return element by its timestamp index or none
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::{NaiveDateTime};
+    ///
+    /// let index = vec![NaiveDateTime::from_timestamp(1,0), NaiveDateTime::from_timestamp(5,0), NaiveDateTime::from_timestamp(10,0)];
+    /// let data = vec![1.0, 2.0, 3.0];
+    /// let ts = TimeSeries::from_vecs(index, data).unwrap();
+    /// assert_eq!(ts.at(NaiveDateTime::from_timestamp(0,0)), None);
+    /// assert_eq!(ts.at(NaiveDateTime::from_timestamp(1,0)), Some(1.0));
+    /// assert_eq!(ts.at(NaiveDateTime::from_timestamp(4,0)), None);
+    /// assert_eq!(ts.at(NaiveDateTime::from_timestamp(6,0)), None);
+    /// assert_eq!(ts.at(NaiveDateTime::from_timestamp(20,0)), None);
+    /// ```
 
     pub fn at(&self, timestamp: TDate) -> Option<T> {
         match self.timeindicies.values.binary_search(&timestamp) {
@@ -231,11 +246,36 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         TimeSeriesIter::new(&self, 0)
     }
 
+
+    /// Convert the series to an iterator where the TDate and T are references rather than values
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    ///
+    /// let values = vec![1.0, 2.0];
+    /// let index = (0..values.len()).map(|i| i as i64).collect();        
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// assert_eq!(ts.iter().count(), 2);
+    /// ```
     pub fn iter(&self) -> TimeSeriesRefIter<TDate,T> {
         TimeSeriesRefIter::new(&self, 0)
     }
-
-
+    /// Get the values of a series between the start and end index (inclusive)
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::NaiveDateTime;
+    ///
+    ///let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    ///let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+    ///let ts = TimeSeries::from_vecs(index, values).unwrap();
+    ///let tsres = ts.between(NaiveDateTime::from_timestamp(60 * 2 as i64,0), NaiveDateTime::from_timestamp(60 * 4 as i64,0));
+    ///assert_eq!(tsres.len(), 3);
+    /// ```
     pub fn between(&self, start: TDate, end: TDate) -> TimeSeries<TDate,T>{
         // this is really ugly but since you know the stuff is ordered you want to short circuit if you can
         let mut newdps: Vec<TimeSeriesDataPoint<TDate,T>> = Vec::new();
@@ -254,8 +294,35 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         TimeSeries::from_tsdatapoints_unchecked(newdps)
     }
 
-
-    pub fn resample_and_agg<TRes>(&self, sample_size :Duration, group_func: fn(&TDate,&Duration)->TDate, agg_func: fn(&Vec<TimeSeriesDataPoint<&TDate,&T>>)->TRes ) -> TimeSeries<TDate,TRes>
+    /// Resample a Timeseries to the target duration, taking values according to the specified agg function
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use tsxlib::data_elements::TimeSeriesDataPoint;
+    /// use tsxlib::timeutils;
+    /// use chrono::{Duration,NaiveDateTime};
+    /// let data = vec![
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 1 as i64,0), 2.0),
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 2 as i64,0), 2.0),
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 3 as i64,0), 5.0),
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 16 as i64,0), 99.0),
+    /// ];
+    /// let tsin = TimeSeries::from_tsdatapoints(data).unwrap();
+    /// 
+    /// let ts_rounded_up = tsin
+    ///     .resample_and_agg(Duration::minutes(15),
+    ///                      |dt,dur| timeutils::round_up_to_nearest_duration(dt, dur), 
+    ///                      |x| *x.last().unwrap().value);
+    /// let expected = vec![
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 15 as i64,0), 5.0),
+    ///     TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 30 as i64,0), 99.0),
+    /// ];
+    /// let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
+    /// assert_eq!(ts_rounded_up, ts_expected);
+    /// ```
+    pub fn resample_and_agg<TRes,TDuration>(&self, sample_size :TDuration, group_func: fn(&TDate,&TDuration)->TDate, agg_func: fn(&Vec<TimeSeriesDataPoint<&TDate,&T>>)->TRes ) -> TimeSeries<TDate,TRes>
     where TRes : Copy
     {
         // let mut groupmap: HashMap<TDate, Vec<TimeSeriesDataPoint<TDate,T>>> = HashMap::with_capacity(self.len());  
@@ -269,7 +336,20 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         self.iter().group_by(|dp| group_func(&dp.timestamp,&sample_size)).into_iter().map(|grp|  TimeSeriesDataPoint::new(grp.0, agg_func(&grp.1.collect()))).collect_from_unchecked_iter()
     }
 
-
+    /// Shift a series by a given index, i.e. a "shift" of 1 will lag the series by 1 obs while a "shift" of 1 will nudge it fwd by 1
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::NaiveDateTime;
+    ///
+    ///let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    ///let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+    ///let ts = TimeSeries::from_vecs(index, values).unwrap();
+    ///let tsres = ts.between(NaiveDateTime::from_timestamp(60 * 2 as i64,0), NaiveDateTime::from_timestamp(60 * 4 as i64,0));
+    ///assert_eq!(tsres.len(), 3);
+    /// ```
     pub fn shift(&self, shift: isize) -> ShiftedTimeSeriesIter<TDate,T>{
         ShiftedTimeSeriesIter::new(&self, 0, shift)
     }
@@ -286,6 +366,20 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         RollingTimeSeriesIterWithUpdate::new(&self, window_size, update_func, decrement_func)
     }
 
+    /// Map the desired UDF over elements of a series
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::NaiveDateTime;
+    ///
+    /// let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    /// let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// let result = ts.map(|x| x * 2.0);
+    /// assert_eq!(result.len(), 5);
+    /// ```
     pub fn map<TRes>(&self, func: fn(&T)->TRes) ->  TimeSeries<TDate,TRes>
     where TRes : Clone + Default
     { #![allow(clippy::needless_range_loop)]
@@ -297,6 +391,20 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         TimeSeries::from_vecs_unchecked(self.timeindicies.clone(), newvals)
     }
 
+    /// Map the desired UDF over elements of a series, keeping track of the date in addition to the value
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::NaiveDateTime;
+    ///
+    /// let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    /// let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// let result = ts.map_with_date(|_dt,x| x * 2.0);
+    /// assert_eq!(result.len(), 5);
+    /// ```
     pub fn map_with_date<TRes>(&self, func: fn(&TDate,&T)->TRes) ->  TimeSeries<TDate,TRes>
     where TRes : Clone + Default
     { #![allow(clippy::needless_range_loop)]
@@ -307,13 +415,55 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         }
         TimeSeries::from_vecs_unchecked(self.timeindicies.clone(), newvals)
     }
-
+    /// Apply a function that calculates its resultant value based on the begining and end of the specified skip span
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use chrono::NaiveDateTime;
+    ///
+    /// let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    /// let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// fn change_func(prior: &f64, curr: &f64) -> f64{
+    ///     curr - prior
+    /// };
+    /// let ts_difference: TimeSeries<NaiveDateTime,f64> = ts.skip_apply(1, change_func).collect();
+    /// fn perc_change_func(prior: &f64, curr: &f64) -> f64{
+    ///     (curr - prior)/prior
+    /// };
+    /// let ts_percent_change: TimeSeries<NaiveDateTime,f64> = ts.skip_apply(1, perc_change_func).collect();
+    /// 
+    /// ```
     pub fn skip_apply<TRes>(&self, skip_span: usize, transform_func: fn(&T,&T)->TRes) -> SkipApplyTimeSeriesIter<TDate,T, TRes>
     where TRes : Copy
     {
         SkipApplyTimeSeriesIter::new(&self, skip_span, transform_func)
     }
-
+    /// inner join two series and apply the desired UDF
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use tsxlib::data_elements::TimeSeriesDataPoint;
+    ///
+    /// let values : Vec<f64> = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    /// let values2 : Vec<f64> = vec![1.0, 2.0, 4.0];
+    /// let index: Vec<i32> = (0..values.len()).map(|i| i as i32).collect();
+    /// let index2: Vec<i32> = (0..values2.len()).map(|i| i as i32).collect();
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// let ts1 = TimeSeries::from_vecs(index2, values2).unwrap();
+    /// let tsres = ts.cross_apply_inner(&ts1,|a,b| (*a,*b));
+    /// let expected = vec![
+    ///     TimeSeriesDataPoint { timestamp: 0, value: (1.00, 1.00) },
+    ///     TimeSeriesDataPoint { timestamp: 1, value: (2.00, 2.00) },
+    ///     TimeSeriesDataPoint { timestamp: 2, value: (3.00, 4.00) },
+    /// ];
+    /// let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
+    /// assert_eq!(ts_expected, tsres)
+    /// ```
     pub fn cross_apply_inner<T2,T3>(&self, other: &TimeSeries<TDate,T2>, apply_func: fn(&T,&T2) -> T3) -> TimeSeries<TDate,T3>
     where 
         T2 : Clone, 
@@ -325,11 +475,35 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         indexes.iter().map(|x| TimeSeriesDataPoint { timestamp : self.timeindicies[x.this_idx].clone(), value : apply_func(&self.values[x.this_idx], &other.values[x.other_idx]) } ).collect()
     }
 
-
+    /// Left join two series and apply the desired UDF
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use tsxlib::data_elements::TimeSeriesDataPoint;
+    ///
+    /// let values : Vec<f64> = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    /// let values2 : Vec<f64> = vec![1.0, 2.0, 4.0];
+    /// let index: Vec<i32> = (0..values.len()).map(|i| i as i32).collect();
+    /// let index2: Vec<i32> = (0..values2.len()).map(|i| i as i32).collect();
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// let ts1 = TimeSeries::from_vecs(index2, values2).unwrap();
+    /// let tsres = ts.cross_apply_left(&ts1,|a,b| (*a, match b { Some(v) => Some(*v), _ => None }));
+    /// let expected = vec![
+    ///     TimeSeriesDataPoint { timestamp: 0, value: (1.00, Some(1.00)) },
+    ///     TimeSeriesDataPoint { timestamp: 1, value: (2.00, Some(2.00)) },
+    ///     TimeSeriesDataPoint { timestamp: 2, value: (3.00, Some(4.0)) },
+    ///     TimeSeriesDataPoint { timestamp: 3, value: (4.00, None) },
+    ///     TimeSeriesDataPoint { timestamp: 4, value: (5.00, None) },
+    /// ];
+    /// let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
+    /// assert_eq!(ts_expected, tsres)
+    /// ```
     pub fn cross_apply_left<T2,T3>(&self, other: &TimeSeries<TDate,T2>, apply_func: fn(&T,Option<&T2>) -> T3) -> TimeSeries<TDate,T3>
     where 
-        T2 : Clone, 
-        T3 : Clone
+        T2 : Clone , 
+        T3 : Clone + fmt::Debug
     {
         let je = JoinEngine{idx_this : &self.timeindicies ,idx_other : &other.timeindicies};
         let indexes = je.get_left_merge_joined_indicies();
@@ -344,9 +518,45 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
                         false => None
                     }
                 )} )
-        .collect()
+                .collect()
     }
-
+    /// This is similar to a left join except that it match on nearest key rather than equal keys similiar to <https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html>
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    /// use tsxlib::data_elements::TimeSeriesDataPoint;
+    /// use chrono::{NaiveDateTime,Duration};
+    /// let values = vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+    /// let index = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];    
+    /// let ts = TimeSeries::from_vecs(index.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values).unwrap();
+    /// let values2 = vec![1.0, 2.0, 3.0, 4.0, 5.0, 6.0];
+    /// let index2 = vec![2, 4, 5, 7, 8, 10];    
+    /// let ts_join = TimeSeries::from_vecs(index2.iter().map(|x| NaiveDateTime::from_timestamp(*x,0)).collect(), values2).unwrap();
+    /// 
+    /// let result = ts.merge_apply_asof(&ts_join,Some(chrono_utils::merge_asof_prior(Duration::seconds(1))),|a,b| (*a, match b {
+    ///     Some(x) => Some(*x),
+    ///     None => None
+    /// }), MergeAsofMode::RollPrior);
+    /// 
+    /// let expected = vec![
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(1,0), value: (1.00, None) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(2,0), value: (1.00, Some(1.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(3,0), value: (1.00, Some(1.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(4,0), value: (1.00, Some(2.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(5,0), value: (1.00, Some(3.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(6,0), value: (1.00, Some(3.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(7,0), value: (1.00, Some(4.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(8,0), value: (1.00, Some(5.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(9,0), value: (1.00, Some(5.00)) },
+    ///     TimeSeriesDataPoint { timestamp: NaiveDateTime::from_timestamp(10,0), value: (1.00, Some(6.00)) },
+    /// ];
+    /// 
+    /// let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
+    /// 
+    /// assert_eq!(result, ts_expected);
+    /// ```
     pub fn merge_apply_asof<T2,T3>(&self, other: &TimeSeries<TDate,T2>, compare_func: Option<Box<dyn Fn(&TDate,&TDate,&TDate)->(cmp::Ordering,i64)>>, apply_func: fn(&T,Option<&T2>) -> T3,merge_mode :MergeAsofMode) -> TimeSeries<TDate,T3>
     where 
         T2 : Clone, 
@@ -468,6 +678,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> FromIterato
     }
 }
 
+
 impl<TDate: Serialize + fmt::Display + Hash + Clone + cmp::Eq + cmp::Ord, T: fmt::Display + Clone> fmt::Display for TimeSeries<TDate,T> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         if self.len() < 10 {
@@ -502,7 +713,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone + cmp::Parti
 mod tests {
 
     use super::*;
-    use chrono::{NaiveDateTime};
+    use chrono::{NaiveDateTime,Duration};
     use crate::timeutils;
     use crate::algo::int_utils;
     use crate::algo::chrono_utils;
@@ -517,7 +728,7 @@ mod tests {
 
     #[test]
     fn test_between() {
-        let values = vec![1.0, 2.5, 3.2, 4.0, 3.0];
+        let values = vec![1.0, 2.0, 3.0, 4.0, 5.0];
         let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
         let ts = TimeSeries::from_vecs(index, values).unwrap();
         let tsres = ts.between(NaiveDateTime::from_timestamp(60 * 2 as i64,0), NaiveDateTime::from_timestamp(60 * 4 as i64,0));
@@ -609,7 +820,7 @@ mod tests {
 
         let ts_rounded_up = tsin
             .resample_and_agg(Duration::minutes(15),
-                             |dt,dur| timeutils::round_up_to_nearest_duration(*dt, *dur), 
+                             |dt,dur| timeutils::round_up_to_nearest_duration(dt, dur), 
                              |x| *x.last().unwrap().value);
         let expected = vec![
             TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(60 * 15 as i64,0), 5.0),
@@ -981,6 +1192,24 @@ mod tests {
         // joinedasof_custom2.iter().for_each(|x|println!("{:.2?}",x));
 
     }
-
+    #[test]
+    fn test_left_join(){
+        let values : Vec<f64> = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+        let values2 : Vec<f64> = vec![1.0, 2.0, 4.0];
+        let index: Vec<i32> = (0..values.len()).map(|i| i as i32).collect();
+        let index2: Vec<i32> = (0..values2.len()).map(|i| i as i32).collect();
+        let ts = TimeSeries::from_vecs(index, values).unwrap();
+        let ts1 = TimeSeries::from_vecs(index2, values2).unwrap();
+        let tsres = ts.cross_apply_left(&ts1,|a,b| (*a, match b { Some(v) => Some(*v), _ => None }));
+        let expected = vec![
+            TimeSeriesDataPoint { timestamp: 0, value: (1.00, Some(1.00)) },
+            TimeSeriesDataPoint { timestamp: 1, value: (2.00, Some(2.00)) },
+            TimeSeriesDataPoint { timestamp: 2, value: (3.00, Some(4.0)) },
+            TimeSeriesDataPoint { timestamp: 3, value: (4.00, None) },
+            TimeSeriesDataPoint { timestamp: 4, value: (5.00, None) },
+        ];
+        let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
+        assert_eq!(ts_expected, tsres)
+    }
 
 }

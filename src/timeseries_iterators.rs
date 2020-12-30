@@ -233,7 +233,6 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> Iterator
 pub struct RollingTimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
-    window_size: usize,
     transform_func: fn(&Vec<T>)->TReduce,
     buffer: Vec<T>,
 }
@@ -244,9 +243,8 @@ impl<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce
         RollingTimeSeriesIter {
             ts,
             index: init_index,
-            window_size,
             transform_func,
-            buffer: ts.values[0..(window_size)].to_vec()
+            buffer: ts.values[0..(window_size-1)].to_vec()
         }
     }
 }
@@ -258,10 +256,10 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce:
         if self.index  < self.ts.len() {
             self.index += 1;
             let rv = self.ts.values[self.index - 1].clone();
-            let func = self.transform_func;
+            let func = self.transform_func;            
+            self.buffer.push(rv);
             let newv = func(&self.buffer);
             self.buffer.remove(0);
-            self.buffer.insert(self.window_size-1, rv);
             Some(TimeSeriesDataPoint::new(
                 self.ts.timeindicies[self.index - 1].clone(),
                 newv
@@ -276,9 +274,10 @@ pub struct RollingTimeSeriesIterWithUpdate<'a, TDate: Serialize + Hash + Clone +
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
     ref_value: Option<TReduce>,
-    last_value: T,
+    last_value: &'a T,
     update_func: fn(Option<TReduce>, &T)->Option<TReduce>,
-    decrement_func: fn(Option<TReduce>, &T)->Option<TReduce>
+    decrement_func: fn(Option<TReduce>, &T)->Option<TReduce>,
+    window_size: usize
 }
 
 impl<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce: Clone> RollingTimeSeriesIterWithUpdate<'a, TDate, T, TReduce>{
@@ -289,9 +288,10 @@ impl<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce
             ts,
             index: init_index,
             ref_value : initval,
-            last_value: ts.values[window_size-1].clone(),
+            last_value: &ts.values[window_size-1],
             update_func,
-            decrement_func
+            decrement_func,
+            window_size
         }
     }
 }
@@ -307,6 +307,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce:
             let dec_func = self.decrement_func;
             self.ref_value = up_func(self.ref_value.clone(),&rv);
             self.ref_value = dec_func(self.ref_value.clone(),&self.last_value);
+            self.last_value = &self.ts.values[self.index - self.window_size];
             match self.ref_value.is_some() { 
             true => Some(TimeSeriesDataPoint::new(
                 self.ts.timeindicies[self.index - 1].clone(),
@@ -469,6 +470,39 @@ mod tests {
         ];
         let tsexp = TimeSeries::from_tsdatapoints(data).unwrap();
         assert_eq!(tsexp, tsrolled);
+    }
+
+    #[test]
+    fn test_rolling_issame() {
+        let values = vec![1.0, 4.0, 2.0, 9.0, 100.0];
+        let index = (0..values.len()).map(|i| NaiveDateTime::from_timestamp(60 * i as i64,0)).collect();
+        let ts = TimeSeries::from_vecs(index, values).unwrap();
+        
+        fn roll_func(buffer: &Vec<f64>) -> f64{
+            buffer.iter().sum()
+        };
+
+        let buffered: TimeSeries<NaiveDateTime,f64> = ts.apply_rolling(2, roll_func).collect();
+
+        fn update(prior: Option<f64>, next: &f64) -> Option<f64>{
+            let v =  match prior.is_some(){
+                true => prior.unwrap(),
+                false => 0.0
+            };
+            Some(v + next)
+        };
+
+        fn decrement(next: Option<f64>, prior: &f64) -> Option<f64>{
+            let v =  match next.is_some(){
+                true => next.unwrap(),
+                false => 0.0
+            };
+            Some(v - prior)
+        };
+
+        let updated: TimeSeries<NaiveDateTime,f64> = ts.apply_updating_rolling(2, update, decrement).collect();
+        assert_eq!(buffered, updated);
+
     }
 
     #[test]

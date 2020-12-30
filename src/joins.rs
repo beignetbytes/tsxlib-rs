@@ -164,14 +164,20 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
             let mut pos1: usize = 0;
             let mut pos2: usize = 0;
 
-            while pos1 < self.idx_this.len() && pos2 < self.idx_other.len() {
+            while pos1 < self.idx_this.len() {
                 match self.idx_this[pos1].cmp(&self.idx_other[pos2]) {
                     cmp::Ordering::Greater => {
                         output.push(IndexJoinPotentiallyUnmatchedPair{
                             this_idx: pos1,
                             other_idx: None
                         });
-                        pos2 += 1;
+                        if pos2 < (self.idx_other.len() - 1){
+                            pos2 += 1;
+                        }
+                        else{
+                            pos1 += 1;     //the first index might still be longer so we gotta keep rolling it forward even though we are out of space on the other index                       
+                        }
+
                     },
                     cmp::Ordering::Less => {
                         output.push(IndexJoinPotentiallyUnmatchedPair{
@@ -186,7 +192,10 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
                             other_idx: Some(pos2)
                         });
                         pos1 += 1;
-                        pos2 += 1;
+                        if pos2 < (self.idx_other.len() - 1){
+                            pos2 += 1;
+                        }
+                        
                     }
                 }
             }
@@ -250,7 +259,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
                 None => Box::new(|idx| idx)
             };
 
-            while pos1 < self.idx_this.len() && pos2 < self.idx_other.len() {
+            while pos1 < self.idx_this.len() {
                 let comp_res = comp_func(&self.idx_this[pos1],&self.idx_other[pos2],&self.idx_other[cand_idx_func(pos2)]);
                 let offset = comp_res.1;
                 match comp_res.0 { 
@@ -260,7 +269,10 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
                             this_idx: pos1,
                             other_idx: None
                         });
-                        pos1 += 1;
+                        if pos2 < (self.idx_other.len() -  1){
+                            pos1 += 1; //the first index might still be longer so we gotta keep rolling it forward even though we are out of space on the other index
+                        }
+
                     },
                     cmp::Ordering::Less => {
                         output.push(IndexJoinPotentiallyUnmatchedPair{
@@ -276,7 +288,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
                             this_idx: pos1,
                             other_idx: Some(idx0.try_into().unwrap())
                         });
-                        if self.idx_this[pos1].eq(&self.idx_other[pos2]) { // only incr if things are actually equal
+                        if self.idx_this[pos1].eq(&self.idx_other[pos2]) && pos2 < (self.idx_other.len() - 1) { // only incr if things are actually equal and you have room to run
                             pos2 += 1;
                         }
                         pos1 += 1;

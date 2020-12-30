@@ -1,6 +1,6 @@
 use chrono::{Duration,NaiveDateTime, DateTime, TimeZone, Utc};
 
-
+///Generate a chrono NaiveDateTime from a i64 value of milliseconds
 pub fn naive_datetime_from_millis(istamp:i64)->NaiveDateTime{
     let secs: i64 = istamp/1000;
     let nsecs: u32 = ((istamp % 1000) * 1000000) as u32;
@@ -55,7 +55,7 @@ modulo_signed_ext_impl! { i8 i16 i32 i64 i128 }
 /// Max precision is milliseconds
 /// 
 /// 
-pub fn round_up_to_nearest_duration<TDate>(timestamp: TDate, sample_size :Duration) -> TDate
+pub fn round_up_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
     let mod_ticks = timestamp.get_utc_millis_since_epoch().modulo(sample_size.num_milliseconds());
@@ -72,7 +72,7 @@ where TDate : DurationRoudable<TDate>
 /// Max precision is milliseconds
 /// 
 /// 
-pub fn round_down_to_nearest_duration<TDate>(timestamp: TDate, sample_size :Duration) -> TDate
+pub fn round_down_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
     let mod_ticks = timestamp.get_utc_millis_since_epoch().modulo(sample_size.num_milliseconds());
@@ -83,7 +83,7 @@ where TDate : DurationRoudable<TDate>
 /// Max precision is milliseconds
 /// 
 /// 
-pub fn round_nearest_to_nearest_duration<TDate>(timestamp: TDate, sample_size :Duration) -> TDate
+pub fn round_nearest_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
     let mod_ticks = timestamp.get_utc_millis_since_epoch().modulo(sample_size.num_milliseconds());
@@ -109,12 +109,12 @@ mod tests {
 
         let date1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 34, 56, 789);
         let dur = Duration::minutes(1);
-        let rounded = round_up_to_nearest_duration(date1, dur);
+        let rounded = round_up_to_nearest_duration(&date1, &dur);
         let exp1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 35, 0, 0);
         assert_eq!(rounded,exp1);
 
         let dur2 = Duration::minutes(15);
-        let rounded2 = round_up_to_nearest_duration(date1, dur2);
+        let rounded2 = round_up_to_nearest_duration(&date1, &dur2);
         let exp2 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 45, 0, 0);
         assert_eq!(rounded2,exp2);
 
@@ -125,12 +125,12 @@ mod tests {
 
         let date1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 34, 56, 789);
         let dur = Duration::minutes(1);
-        let rounded = round_down_to_nearest_duration(date1, dur);
+        let rounded = round_down_to_nearest_duration(&date1, &dur);
         let exp1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 34, 0, 0);
         assert_eq!(rounded,exp1);
 
         let dur2 = Duration::minutes(15);
-        let rounded2 = round_down_to_nearest_duration(date1, dur2);
+        let rounded2 = round_down_to_nearest_duration(&date1, &dur2);
         let exp2 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 30, 0, 0);
         assert_eq!(rounded2,exp2);
 
@@ -141,12 +141,12 @@ mod tests {
 
         let date1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 34, 30, 789);
         let dur = Duration::minutes(1);
-        let rounded = round_nearest_to_nearest_duration(date1, dur);
+        let rounded = round_nearest_to_nearest_duration(&date1, &dur);
         let exp1 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 35, 0, 0);
         assert_eq!(rounded,exp1);
 
         let dur2 = Duration::minutes(15);
-        let rounded2 = round_nearest_to_nearest_duration(date1, dur2);
+        let rounded2 = round_nearest_to_nearest_duration(&date1, &dur2);
         let exp2 = NaiveDate::from_ymd(2010,12,10).and_hms_milli(12, 30, 0, 0);
         assert_eq!(rounded2,exp2);
 
