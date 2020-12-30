@@ -6,10 +6,15 @@ description = "timeseries library"
 keywords = ["timeseries","analysis","data"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/binarybytes11/tsxlib-rs"
-homepage = "idk"
-documentation = "idk"
+homepage = "https://github.com/binarybytes11/tsxlib-rs"
+documentation = "https://docs.rs/tsxlib/latest/tsxlib/"
 readme = "README.md"
 edition = "2018"
+exclude = [
+    "testdata/*",
+    "code_cov.sh",
+    "config.toml",
+]
 
 [dependencies]
 serde = { version = ">=1.0.0", features = ["derive"] }

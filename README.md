@@ -1,6 +1,8 @@
 # TSXLIB-RS General Use Timeseries Containers for Rust 
 [![Build Status](https://travis-ci.com/beignetbytes/tsxlib-rs.svg?branch=main)](https://travis-ci.com/beignetbytes/tsxlib-rs)
 [![codecov](https://codecov.io/gh/beignetbytes/tsxlib-rs/branch/main/graph/badge.svg?token=U2LYGT2LN8)](https://codecov.io/gh/beignetbytes/tsxlib-rs)
+[![rust docs](https://docs.rs/tsxlib/badge.svg)](https://docs.rs/tsxlib/latest/tsxlib/)
+[![](http://meritbadge.herokuapp.com/tsxlib)](https://crates.io/crates/tsxlib)
 
 # Project Overview
 
