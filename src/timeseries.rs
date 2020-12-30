@@ -525,8 +525,9 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
     /// # Example
     ///
     /// ```
-    /// use tsxlib::timeseries::TimeSeries;
+    /// use tsxlib::timeseries::{TimeSeries,MergeAsofMode};
     /// use tsxlib::data_elements::TimeSeriesDataPoint;
+    /// use tsxlib::algo::chrono_utils;
     /// use chrono::{NaiveDateTime,Duration};
     /// let values = vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
     /// let index = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];    
