@@ -13,13 +13,13 @@ However, as with any beta stage project breaking changes may still occur.
 
 # Goals and Non-Goals
 
-The goal of this project is to provide a general container with robust compile time visbility that you can use to 1.) collect timeseries data and 2.) do efficient map operations on it, right now this comes at the cost of lookup performance.
+The goal of this project is to provide a general container with robust compile time visibility that you can use to 1.) collect timeseries data and 2.) do efficient map operations on it, right now this comes at the cost of lookup performance.
 
-We deliberatly make (very little) assumptions about what the data you will put into the container will be. i.e. it is generic over both data and key. This is to allow you to put in whatever custom time struct you want along with whatever data that you want.
+We deliberately make (very little) assumptions about what the data you will put into the container will be. i.e. it is generic over both data and key. This is to allow you to put in whatever custom time struct you want along with whatever data that you want.
 
-It is on the TODO list to add some basic specialization for primitives, i.e. have a diff() method vs having to put in a UDF on the skip operator to accomplish the same thing.
+It is on the TODO list to add some basic specialization for primitives, i.e. have a diff() method vs having to put in a UDF on the skip operator for f64's every time to accomplish the same thing.
 
-Conversly, this is not meant to be a generic dataframe-like library.
+Conversely, this is not meant to be a generic dataframe-like library.
 
 
 # Quick Start
@@ -41,11 +41,12 @@ tsxlib = { version = "^0.1.0", features = ["parq","json"] }
 
 Tested on Rust >=1.48
 
-Once the project stabilizes there will effort put into maintaining compatibility with prior rust compiler versions
+Once the project stabilizes there will be effort put into maintaining compatibility with prior rust compiler versions
 
 # Examples
 
-Using this libary you can
+Using this library you can:
+<br>
 Extract points from a timeseries
 ```
 use tsxlib::timeseries::TimeSeries;
@@ -68,11 +69,11 @@ or positionally
 ```
 assert_eq!(ts.at_idx_of(1), Some(TimeSeriesDataPoint::new(NaiveDateTime::from_timestamp(5,0), 2.0)));
 ```
-Map a function over a TimeSeries
+The library also lets you map a function efficiently over a TimeSeries
 ```
 let result = ts.map(|x| x * 2.0);
 ```
-However, you can also use it as an interator, collect will check for order and reorder if needed but methods named  "unchecked" will not.
+However, you can also use it as an iterator, N.B. collect will check for order and reorder if needed but methods named  "unchecked" will not.
 ```
 let result: TimeSeries<NaiveDateTime,f64> = ts.into_iter().map(|x| TimeSeriesDataPoint::new(x.timestamp,x.value * 2.0)).collect_from_unchecked_iter();
 ```
@@ -80,11 +81,12 @@ This means you can use it with other crates that work as extensions on iterators
 ```
 let result: TimeSeries<NaiveDateTime,f64> = TimeSeries::from_tsdatapoints(ts.into_iter().par_bridge().map(|x| TimeSeriesDataPoint::new(x.timestamp,x.value * 2.0)).collect::<Vec<TimeSeriesDataPoint<NaiveDateTime, f64>>>()).unwrap();
 ```
-And that you can use native iterator methods to calculate things like cumulative sum
+And it also means that you can use native iterator methods to calculate things like a cumulative sum
 ```
 //as a total
 let total = ts.into_iter().fold(0.0,|acc,x| acc + x.value);
 // as a timeseries
+let mut acc = 0.0;
 let result: TimeSeries<NaiveDateTime, f64> = ts.into_iter().map(|x| {acc = acc + x.value; TimeSeriesDataPoint::new(x.timestamp,acc) }).collect();
 ```
 Joins/Cross apply operations are also implemented, 
@@ -135,7 +137,7 @@ let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
 
 assert_eq!(ts_expected, tsres)
 ```
-We have Asof Apply:
+Given that this is a Timeseries focused library, we also have As-Of Apply:
 ```
 let values = vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 let index = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];    
@@ -166,7 +168,7 @@ let ts_expected = TimeSeries::from_tsdatapoints(expected).unwrap();
 
 assert_eq!(result, ts_expected);
 ```
-Lastly you can also easily join multiple series together
+Lastly, you can also easily join multiple series together
 ```
 let ts = TimeSeries::from_vecs(index.clone(), values).unwrap();
 let ts1 = TimeSeries::from_vecs(index.clone(), values2).unwrap();
@@ -176,32 +178,31 @@ let tsres = n_inner_join!(ts,&ts1,&ts2,&ts3);
 
 ```
 Various Timeseries functionalities are generally implemented as Iterators. e.g.
-Shift...
-The language of the APIs is meant to be general so
+shift...
 ```
 let tslag: TimeSeries<NaiveDateTime,f64> = ts.shift(-1).collect();
 ```
-means "lag", and
+The language of the APIs is meant to be general so the above means "lag", and
 ```
 let tsfwd: TimeSeries<NaiveDateTime,f64> = ts.shift(1).collect();
 ```
 means "roll forward"
 
-TSLIB-RS also has a "skip" operator. i.e. if you wanted to implement difference you could write
+TSXLIB-RS also has a "skip" operator. i.e. if you wanted to implement difference you could write
 ```
 fn change_func(prior: &f64, curr: &f64) -> f64{
     curr - prior
 };
 let ts_diff: TimeSeries<NaiveDateTime,f64> = ts.skip_apply(1, change_func).collect();
 ```
-Conversly if you wanted to implement percent change you could write
+Conversely if you wanted to implement percent change you could write
 ```
 fn change_func(prior: &f64, curr: &f64) -> f64{
     (curr - prior)/prior
 };
 let ts_perc_ch: TimeSeries<NaiveDateTime,f64> = ts.skip_apply(1, change_func).collect();
 ```
-TSLIB-RS has rolling window operations as well.
+TSXLIB-RS has rolling window operations as well.
 They can be implemented using a buffer
 ```
 let values = vec![1.0, 1.0, 1.0, 1.0, 1.0];
@@ -236,7 +237,7 @@ fn decrement(next: Option<f64>, prior: &f64) -> Option<f64>{
 let tsrolled: TimeSeries<NaiveDateTime,f64> = ts.apply_updating_rolling(2, update, decrement).collect();
 ```
 
-TSXLIB-RS supports aggreggation on the index as well
+TSXLIB-RS supports aggregation on the index as well
 ```
 let result = ts.resample_and_agg(Duration::minutes(15), |dt,dur| timeutils::round_up_to_nearest_duration(dt, dur), |x| *x.last().unwrap().value);
 ```
@@ -245,7 +246,7 @@ For more comprehensive/runnable examples check out the tests and the examples!
 
 # Benchmark Performance
 
-The benchmark here consits of generating a series of 999,997 doubles with a chrono NaiveDateTime of millisecond precision as key. This data is then lagged then joined. Following this it is rounded up/down into bars. in both benchmarks the *last* value is taken (but you can use whatever UDF you want to generate this aggregation). Lastly, we transform the data into a simiple stuct with the following fields
+The benchmark that we run here consist of generating a series of 999,997 doubles with a `chrono` NaiveDateTime of millisecond precision as the key. This data is then lagged then joined. Following this it is rounded up/down into bars. in both benchmarks the *last* value is taken (but you can use whatever UDF you want to generate this aggregation). Lastly, we transform the data into a simple struct with the following fields
 ```
 #[derive(Clone,Copy,Serialize,Default)]
 struct SimpleStruct{
@@ -254,7 +255,7 @@ struct SimpleStruct{
     pub floatvalue: f64
 };
 ```
-In the last two benchmarks we transform this struct to 
+In the last two benchmarks we transform the struct above to 
 ```
     #[derive(Clone,Copy,Serialize,Default)]
     struct OtherStruct{
@@ -263,7 +264,7 @@ In the last two benchmarks we transform this struct to
     };
 ```
 
-via
+via the following UDF
 ```
 fn complicated(x: &SimpleStruct) -> OtherStruct{
     if x.timestamp & 1 == 0 {
@@ -324,7 +325,7 @@ And then run *benchmark.exe*
 | Shifts                                            | ✔      | Core                 |                | >=1.48       |
 | Inner Join (Merge & Hash Join)                    | ✔      | Core                 |                | >=1.48       |
 | Left Join (Merge & Hash Join)                     | ✔      | Core                 |                | >=1.48       |
-| "Asof" Join (Merge)                               | ✔      | Core                 |                | >=1.48       |
+| "As-Of" Join (Merge)                               | ✔      | Core                 |                | >=1.48       |
 | Multiple Inner Join                               | ✔      | Core                 |                | >=1.48       |
 | Concat/Interweave                                 | ✔      | Core                 |                | >=1.48       |
 | Time Aggregation                                  | ✔      | Core                 |                | >=1.48       |
@@ -335,7 +336,7 @@ And then run *benchmark.exe*
 | Native Null Filling/Interpolations                |        | Core                 |                |  >=1.48      |
 | Buffer Based Moving Window Operations             | ✔      | Core                 |                | >=1.48       |
 | Update Based Moving Window Operations             | ✔      | Core                 |                | >=1.48       |
-| "Skip" Operations (i.e. diff...etc)               | ✔      | Core                 |                | >=1.48       |
+| "Skip" Operations (i.e. diff...etc.)               | ✔      | Core                 |                | >=1.48       |
 | Rust iterators                                    | ✔      | Core                 |                | >=1.48       |
 | Ordered Rust iterators                            | ✔      | Core                 |                | >=1.48       |
 | Streaming iterators                               | ✔      | Core                 |                | >=1.48       |
@@ -346,14 +347,14 @@ And then run *benchmark.exe*
 | Flatbuffer IO                                     |       | IO                   |                | >=1.48       |
 | Apache Kafka IO                                   |       | IO                   |                | >=1.48       |
 | Protocol buffer IO                                |       | IO                   |                | >=1.48       |
-| Inutive APIs for primitive value types            |       | Specializations      |                | >=1.48       |
+| Intuitive APIs for primitive value types          |       | Specializations      |                | >=1.48       |
 | Native Multithreading                             |       | Core                 |                | >=1.48       |
-| Comprensive Documentation                         |       | Meta                 |                | >=1.48       |
+| Comprehensive Documentation                         |       | Meta                 |                | >=1.48       |
 | Test Coverage                                     |       | Meta                 |                | >=1.48       |
 | More Examples                                     |       | Meta                 |                | >=1.48       |
 <br>
 
-Features marked "*" need additional performance tuning and perhaps a refactoring into a more generic framework. Note that although compatibilty is only listed as Rust >=1.48, TSXLIB-RS might work with lower rust versions as well it just has not been tested.
+Features marked "*" need additional performance tuning and perhaps a refactoring into a more generic framework. Note that although compatibility is only listed as Rust >=1.48, TSXLIB-RS might work with lower Rust versions as well it just has not been tested.
 
 
 # License
