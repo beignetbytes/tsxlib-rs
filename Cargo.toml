@@ -1,7 +1,7 @@
 [package]
 name = "tsxlib"
 version = "0.1.1"
-authors = ["binarybytes11 <binarybytes11@gmail.com>"]
+authors = ["beignetbytes <beignetbytes@gmail.com>"]
 description = "timeseries library"
 keywords = ["timeseries","analysis","data"]
 license = "MIT OR Apache-2.0"
