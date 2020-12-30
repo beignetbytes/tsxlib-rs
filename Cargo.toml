@@ -1,6 +1,6 @@
 [package]
 name = "tsxlib"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["beignetbytes <beignetbytes@gmail.com>"]
 description = "timeseries library"
 keywords = ["timeseries","analysis","data"]
