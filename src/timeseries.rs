@@ -11,9 +11,10 @@ use crate::data_elements::TimeSeriesDataPoint;
 use crate::index::HashableIndex;
 use crate::joins::{JoinEngine};
 
+/// MergeAsofMode describes the roll behavior of the asof merge
 pub enum MergeAsofMode{ RollPrior, RollFollowing, NoRoll}
 
-/// timeseries base struct of an index and a Vec<T> of values
+/// Timeseries base struct of an index and a Vec<T> of values
 #[derive(Clone,Debug)]
 pub struct TimeSeries<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     pub timeindicies: HashableIndex<TDate>,
@@ -37,7 +38,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         TimeSeries::from_vecs(vec![], vec![]).unwrap()
     }
 
-    /// Create a series by giving a vector of indicies and values
+    /// Create a series by giving a vector of indicies and values, this will error if the index is not unique or not monotonic or if the input arrays are not of equal length
     ///
     /// # Example
     ///
@@ -61,6 +62,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         }
     }
 
+    /// Create a series by giving a vector of indicies and values, it will check for the vectors being equal length
     pub fn from_vecs_minimal_checks(timeindicies: HashableIndex<TDate>, values: Vec<T>) -> Result<TimeSeries<TDate, T>, std::io::Error> {
         if timeindicies.len() != values.len() {
             Err(std::io::Error::new(
@@ -72,7 +74,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
 
         }
     }
-
+    /// Create a series by giving a vector of indicies and values no checks are done
     pub fn from_vecs_unchecked(timeindicies: HashableIndex<TDate>, values: Vec<T>) -> TimeSeries<TDate, T> {
         TimeSeries::<TDate,T> {
             timeindicies,
@@ -80,7 +82,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         }
     }
 
-    /// Create a new series from a set of TimeSeriesDataPoints
+    /// Create a new series from a set of TimeSeriesDataPoints, this method will reorder your data into ascending order if needed
     ///
     /// # Example
     ///
@@ -108,6 +110,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         });
         TimeSeries::from_vecs(index,values)
     }
+    /// Create a new series from a set of TimeSeriesDataPoints without any ordering checks
     pub fn from_tsdatapoints_unchecked(tsdatapoints: Vec<TimeSeriesDataPoint<TDate,T>>) -> TimeSeries<TDate, T> {
         let len =  tsdatapoints.len();
         let mut index= Vec::with_capacity(len);
@@ -136,6 +139,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         self.timeindicies.len()
     }
 
+    /// Returns true if the series is empty
     pub fn is_empty(&self) -> bool {
         self.timeindicies.is_empty()
     }
@@ -226,7 +230,18 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
     pub fn into_ordered_iter(&self) -> OrderedTimeSeriesIter<TDate,T> {   #![allow(clippy::wrong_self_convention)]
         OrderedTimeSeriesIter::new(&self, 0)
     }
-
+    /// Convert the series to an ordered iterator
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use tsxlib::timeseries::TimeSeries;
+    ///
+    /// let values = vec![1.0, 2.0];
+    /// let index = (0..values.len()).map(|i| i as i64).collect();        
+    /// let ts = TimeSeries::from_vecs(index, values).unwrap();
+    /// assert_eq!(ts.ordered_iter().count(), 2);
+    /// ```
     pub fn ordered_iter(&self) -> OrderedTimeSeriesRefIter<TDate,T> {
         OrderedTimeSeriesRefIter::new(&self, 0)
     }
@@ -336,7 +351,7 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         self.iter().group_by(|dp| group_func(&dp.timestamp,&sample_size)).into_iter().map(|grp|  TimeSeriesDataPoint::new(grp.0, agg_func(&grp.1.collect()))).collect_from_unchecked_iter()
     }
 
-    /// Shift a series by a given index, i.e. a "shift" of 1 will lag the series by 1 obs while a "shift" of 1 will nudge it fwd by 1
+    /// Shift a series by a given index, i.e. a "shift" of -1 will lag the series by 1 obs while a "shift" of 1 will nudge it fwd by 1
     ///
     /// # Example
     ///
@@ -354,12 +369,14 @@ impl<TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> TimeSeries<
         ShiftedTimeSeriesIter::new(&self, 0, shift)
     }
 
+    /// Apply a rolling function on the values of timeseries via a buffer, this is the less efficient cousin of `apply_updating_rolling`
     pub fn apply_rolling<TRes>(&self, window_size: usize,transform_func: fn(&Vec<T>)->TRes) -> RollingTimeSeriesIter<TDate,T, TRes>
     where TRes : Clone
     {
         RollingTimeSeriesIter::new(&self, window_size, transform_func)
     }
 
+    /// Apply a rolling function on the values of timeseries via a update and decrement functions, this is the more efficient cousin of `apply_rolling`
     pub fn apply_updating_rolling<TRes>(&self, window_size: usize,update_func: fn(Option<TRes>, &T)->Option<TRes>, decrement_func: fn(Option<TRes>, &T)->Option<TRes>) -> RollingTimeSeriesIterWithUpdate<TDate,T, TRes>
     where TRes : Clone
     {

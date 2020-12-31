@@ -1,3 +1,4 @@
+//! # Join Logic
 use std::cmp;
 use std::hash::{Hash};
 use std::collections::{HashMap};
@@ -6,17 +7,18 @@ use serde::{Serialize};
 use std::convert::TryInto;
 use crate::index::{HashableIndex};
 
-
+/// JoinEngine<TIndex> is responsible for join logic, it consists of two indicies. `idx_this` is the LHS and `idx_other` is the RHS. Indicies are passed by reference
 pub struct JoinEngine<'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> {
     pub idx_this : &'a HashableIndex<TIndex>,
     pub idx_other : &'a HashableIndex<TIndex>
 }
-
+/// Represents a matched set of indicies
 pub struct IndexJoinPair{
     pub this_idx: usize,
     pub other_idx: usize 
 }
 
+/// Represents an potentially unmatched set of indicies
 pub struct IndexJoinPotentiallyUnmatchedPair{
     pub this_idx: usize,
     pub other_idx: Option<usize> 
@@ -152,7 +154,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
             res
         }
     }
-
+    /// Left Merge Join
     pub fn get_left_merge_joined_indicies(&self) -> Vec<IndexJoinPotentiallyUnmatchedPair>
     {
         if self.index_is_same() {
@@ -203,7 +205,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
         }
     }
 
-    /// merge sort joirn join a and b.
+    /// merge sort join join a and b.
     pub fn get_inner_merge_joined_indicies(&self) -> Vec<IndexJoinPair>
     {
         if self.index_is_same() {
@@ -237,7 +239,7 @@ impl <'a, TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> JoinEngine<'a, 
         }
     }
     
-    /// merge sort joirn join a and b.
+    /// as of join. this is a variation of merge join that allows for indicies to be equal based on a custom comperator func
     pub fn get_asof_merge_joined_indicies(&self, compare_func: Option<Box<dyn Fn(&TIndex,&TIndex,&TIndex)->(cmp::Ordering,i64)>>,other_idx_func: Option<Box<dyn Fn(usize)->usize>>) -> Vec<IndexJoinPotentiallyUnmatchedPair>
     { #![allow(clippy::type_complexity)]
         if self.index_is_same() {

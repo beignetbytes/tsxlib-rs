@@ -1,3 +1,4 @@
+//! # TimeSeries Iterators
 use std::cmp;
 use std::hash::Hash;
 
@@ -6,7 +7,7 @@ use serde::{Serialize};
 use crate::data_elements::TimeSeriesDataPoint;
 use crate::timeseries::TimeSeries;
 
-
+/// An iterator that gaurentees proper ordering of a TimeSeries. if this iterator encounters a non monitonically increasing value it stops evaluating
 pub struct OrderedTimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
@@ -53,7 +54,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> Iterator
         }
     }
 }
-
+/// An iterator that gaurentees proper ordering of a TimeSeries. if this iterator encounters a non monitonically increasing value it stops evaluating. It returns its values by reference
 pub struct OrderedTimeSeriesRefIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
@@ -101,6 +102,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> Iterator
     }
 }
 
+/// An generic iterator for a timeseries. It does not gaurenteee order. Data is iterated in order of insertion into the containers.
 pub struct TimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize
@@ -131,7 +133,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone > Iterato
     }
 }
 
-
+/// An generic iterator for a timeseries. It does not gaurenteee order. Data is iterated in order of insertion into the containers. Values are returned by Reference
 pub struct TimeSeriesRefIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize
@@ -163,6 +165,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone > Iterato
 }
 
 
+/// A trait the allows you to collect an `Iterator<Item = TimeSeriesDataPoint<TDate,T>>` into a `TimeSeries<TDate,T>` without a potential reorder. Use this method if you know that your data points are in ascending order.
 pub trait FromUncheckedIterator<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord,T: Clone>{
     fn collect_from_unchecked_iter(self) -> TimeSeries<TDate,T>;    
 }
@@ -174,6 +177,7 @@ where Tin: Iterator<Item = TimeSeriesDataPoint<TDate,T>> {
     }
 }
 
+/// an iterator that represents a shift of the values of the Timeseries vs the index. i.e. a -1 shift index means a lag and +1 means a shift forward
 pub struct ShiftedTimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
@@ -229,7 +233,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone> Iterator
         
     }
 }
-
+/// an iterator that represents a rolling operation on a Timeseries. Data in the window is held in a buffer that gets reduced according the the transform func.
 pub struct RollingTimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
@@ -270,6 +274,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce:
     }
 }
 
+/// an iterator that represents a rolling operation on a Timeseries. the transform value is computed according the update and decrement functions, i.e. if you wanted to get the rolling sum you would make it such that update_func => existing value + next value and decrement_func => existing value - last value
 pub struct RollingTimeSeriesIterWithUpdate<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T:Clone, TReduce: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,
@@ -322,7 +327,7 @@ impl<'a,TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T: Clone, TReduce:
 }
 
 
-
+/// an iterator that represents a skip operation on a Timeseries. Skips take the given span_size and apply a func on the two points on the edges to come up with a new values. You can express difference as a skip operations, e.g. `transform_func = |prior,next| next - prior`
 pub struct SkipApplyTimeSeriesIter<'a, TDate: Serialize + Hash + Clone + cmp::Eq + cmp::Ord, T:Clone, TReduce: Clone> {
     ts: &'a TimeSeries<TDate,T>,
     index: usize,

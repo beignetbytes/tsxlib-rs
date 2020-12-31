@@ -1,3 +1,4 @@
+//! # Apache Parquet IO
 use parquet::file::reader::SerializedFileReader;
 use std::error::Error;
 use std::hash::Hash;

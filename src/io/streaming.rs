@@ -1,3 +1,4 @@
+//! # Data Streaming Iterators
 use std::error::Error;
 use std::cmp;
 use std::fmt;

@@ -1,3 +1,7 @@
+//! # IO 
+//!
+//! This module contains the various IO methods that you can use to IO TimeSeries.
+//!
 pub mod csv;
 pub mod streaming;
 //varies feature libaries after this

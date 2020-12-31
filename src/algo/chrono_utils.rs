@@ -1,3 +1,4 @@
+//! # Utilities for chrono DateTimes
 use std::cmp;
 
 use chrono::{Duration, NaiveDateTime};
@@ -31,10 +32,11 @@ fn merge_asof_fwd_impl(this: &NaiveDateTime,other: &NaiveDateTime,other_peak: &N
 fn merge_asof_frontend(free_param :Duration, func: fn(&NaiveDateTime,&NaiveDateTime,&NaiveDateTime,Duration)-> (cmp::Ordering,i64)) -> Box<dyn Fn(&NaiveDateTime,&NaiveDateTime,&NaiveDateTime)->(cmp::Ordering,i64)> {
     Box::new(move |this: &NaiveDateTime, other: &NaiveDateTime, other_peak: &NaiveDateTime| func(this, other, other_peak,free_param))
 }
-
+/// Implementation fo mergeasof for a given duration lookback for a pair of Timeseries that has a HashableIndex<NaiveDateTime>
 pub fn merge_asof_prior(look_back :Duration) -> Box<dyn Fn(&NaiveDateTime,&NaiveDateTime,&NaiveDateTime)->(cmp::Ordering,i64)> {
     merge_asof_frontend(look_back,merge_asof_prior_impl)
 }
+/// Implementation fo mergeasof for a given duration look-forward for a pair of Timeseries that has a HashableIndex<NaiveDateTime>
 pub fn merge_asof_fwd(look_fwd :Duration) -> Box<dyn Fn(&NaiveDateTime,&NaiveDateTime,&NaiveDateTime)->(cmp::Ordering,i64)> {
     merge_asof_frontend(look_fwd,merge_asof_fwd_impl)
 }

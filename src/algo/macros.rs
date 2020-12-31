@@ -1,4 +1,7 @@
+//! # Macro Utilities for TimeSeries
+
 #![allow(unused_macros)]
+///Utility Macro to inner join N series to use simply pass a N-ple of TimeSeries `n_inner_join!(ts,&ts1,&ts2,&ts3)`
 macro_rules! n_inner_join {
     // @closure creates a tuple-flattening closure for .map() call. usage:
     // @closure partial_pattern => partial_tuple , rest , of , iterators

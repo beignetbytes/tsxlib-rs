@@ -1,3 +1,4 @@
+//! # Utilities for ints
 use std::cmp;
 
 fn merge_asof_prior_impl(this: &i32,other: &i32,other_prior: &i32, asoflookback :i32) -> (cmp::Ordering,i64) {
@@ -27,9 +28,11 @@ fn merge_asof_frontend(free_param :i32, func: fn(&i32,&i32,&i32,i32)-> (cmp::Ord
     Box::new(move |this: &i32, other: &i32, other_peak: &i32| func(this, other, other_peak,free_param))
 }
 
+/// Implementation fo mergeasof for a given duration lookback for a pair of Timeseries that has a HashableIndex<i32>
 pub fn merge_asof_prior(look_back :i32) -> Box<dyn Fn(&i32,&i32,&i32)->(cmp::Ordering,i64)> {
     merge_asof_frontend(look_back,merge_asof_prior_impl)
 }
+/// Implementation fo mergeasof for a given duration look-forward for a pair of Timeseries that has a HashableIndex<i32>
 pub fn merge_asof_fwd(look_fwd :i32) -> Box<dyn Fn(&i32,&i32,&i32)->(cmp::Ordering,i64)> {
     merge_asof_frontend(look_fwd,merge_asof_fwd_impl)
 }

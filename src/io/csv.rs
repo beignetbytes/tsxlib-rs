@@ -1,3 +1,4 @@
+//! # CSV IO
 use serde::Serialize;
 use serde::de::DeserializeOwned;
 use std::error::Error;

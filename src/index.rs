@@ -1,3 +1,4 @@
+//! # TimeSeries Index Representation
 use std::cmp;
 use std::collections::{BinaryHeap,HashMap, HashSet};
 use std::ops::Index;
@@ -5,7 +6,7 @@ use std::hash::Hash;
 use chrono::{Duration, NaiveDateTime};
 use serde::{Serialize};
 
-/// DateTimeIndex is represented as an array of timestamps (i64)
+/// a HashableIndex<TDate> serves as the index for a timeseries, it requires that the index element be Serializatable (via serde), Hashable, Cloneable, Equatable, and Orderable.
 #[derive(Clone, Debug)]
 pub struct HashableIndex<TIndex: Serialize + Hash + Clone + cmp::Eq + cmp::Ord> {
     pub values: Vec<TIndex>
@@ -28,11 +29,12 @@ where
     heap.into_sorted_vec().iter().map(|r| r.0.clone()).collect()
 }
 
+/// This trait represents an index that has a notion of sampleability. i.e. the semantic meaning of differenencces in the index
 pub trait SampleableIndex<TIndex: Serialize + Hash + Copy + cmp::Eq + cmp::Ord,TInterval>{
     fn sample_rates(&self) -> Vec<(usize, TInterval)>;
     fn is_mono_intervaled(&self) -> bool;
 }
-
+///Implementation of SampleableIndex for HashableIndex<NaiveDateTime> 
 impl SampleableIndex<NaiveDateTime,Duration> for HashableIndex<NaiveDateTime>
 {
     /// Infer index sample rate, returns a vector that represtest (number of times a sample rate is observed, the sample rate)

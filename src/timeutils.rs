@@ -1,3 +1,4 @@
+//! # Utilities for chrono DateTimes
 use chrono::{Duration,NaiveDateTime, DateTime, TimeZone, Utc};
 
 ///Generate a chrono NaiveDateTime from a i64 value of milliseconds
@@ -7,6 +8,7 @@ pub fn naive_datetime_from_millis(istamp:i64)->NaiveDateTime{
     NaiveDateTime::from_timestamp(secs, nsecs)
 }
 
+/// This trait defines the contract for rounding a T via the methods in timeutils
 pub trait DurationRoudable<T>{
     fn get_utc_millis_since_epoch(&self) -> i64;
     fn repr_from_utc_millis(&self, utc_milli_stamp: i64) -> T; //need the self here to push the timezone down 
@@ -54,7 +56,7 @@ modulo_signed_ext_impl! { i8 i16 i32 i64 i128 }
 
 /// Max precision is milliseconds
 /// 
-/// 
+/// Rounds a TDate up to the nearest duration, i.e. if you had a chrono::NaiveDateTime{2020-12-31T12:35:00Z} and you rounding to Duration{15mins} it would return 12:45
 pub fn round_up_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
@@ -71,7 +73,7 @@ where TDate : DurationRoudable<TDate>
 
 /// Max precision is milliseconds
 /// 
-/// 
+/// Rounds a TDate down to the nearest duration, i.e. if you had a chrono::NaiveDateTime{2020-12-31T12:35:00Z} and you rounding to Duration{15mins} it would return 12:30
 pub fn round_down_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
@@ -82,7 +84,7 @@ where TDate : DurationRoudable<TDate>
 
 /// Max precision is milliseconds
 /// 
-/// 
+/// Rounds a TDate to the nearest duration, i.e. if you had a chrono::NaiveDateTime{2020-12-31T12:35:00Z} and you rounding to Duration{15mins} it would return 12:30
 pub fn round_nearest_to_nearest_duration<TDate>(timestamp: &TDate, sample_size :&Duration) -> TDate
 where TDate : DurationRoudable<TDate>
 {
